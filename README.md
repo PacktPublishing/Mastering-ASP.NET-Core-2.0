@@ -12,11 +12,9 @@ Use the following:
 
 1 - Open solution BookShop.sln using Visual Studio 2017.
 2 - Set Web as the startup project
-.
 3 - Start debugging.
 4 - On the error message allow the execution of the migration.
 5 - Go to Register and create an account as administrator and any others a non-administrator
-.
 
 The code will look like the following:
 ```
