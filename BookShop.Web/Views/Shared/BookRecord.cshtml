@@ -1,0 +1,30 @@
+﻿@model BookShop.DomainModel.Book
+
+@functions
+{
+	string GetColor()
+	{
+		if (Model.Stock == 0)
+		{
+			return "red";
+		}
+		else
+		{
+			return "black";
+		}
+	}
+}
+
+<tr style="color:@GetColor()">
+	<td>@Html.ActionLink(Model.Title, "Detail", routeValues: new { id = Model.BookId }, htmlAttributes: new { style = "color:" + GetColor() })</td>
+	<td>@Html.ActionLink(Model.Author.Name, "Author", routeValues: new { id = Model.Author.AuthorId })</td>
+	<td>@Model.ReleaseDate.ToString("yyyy-MM-dd")</td>
+	@if (Model.Stock != 0)
+	{
+		<td>@Html.ActionLink("Buy", "Buy", routeValues: new { id = Model.BookId, returnUrl = this.Context.Request.Path })</td>
+	}
+	else
+	{
+		<td><span>Out of stock</span></td>
+	}
+</tr>

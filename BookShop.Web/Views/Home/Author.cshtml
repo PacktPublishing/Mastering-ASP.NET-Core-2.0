@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using BookShop.Web
+@using BookShop.DomainModel
+@inject IViewLocalizer Localizer
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+@model IEnumerable<Book>
+@{
+	ViewData["Title"] = "Book Shop - " + Localizer["SearchResults"];
+}
+
+<div>
+	<h1>Search Results - @Model.FirstOrDefault()?.Author.Name</h1>
+	@Html.Partial("Book", Model)
+</div>

@@ -1,0 +1,57 @@
+﻿@using BookShop.DomainModel
+@model Book
+<script src="~/lib/signalr/signalr-client-1.0.0-alpha1-final.js"></script>
+<script src="~/lib/signalr/signalr-msgpackprotocol-1.0.0-alpha1-final.js"></script>
+
+
+<script>
+	var transportType = signalR.TransportType.ServerSentEvents;
+	var logger = new signalR.ConsoleLogger(signalR.LogLevel.Information);
+	var chatHub = new signalR.HttpConnection(`http://${document.location.host}/chat?bookId=@Model.BookId`, { transport: transportType, logger: logger });
+	var timerHub = new signalR.HttpConnection(`http://${document.location.host}/timer`, { transport: transportType, logger: logger });
+	var chatConnection = new signalR.HubConnection(chatHub, logger);
+	var timerConnection = new signalR.HubConnection(timerHub, logger);
+
+	chatConnection.onClosed = e => {
+	};
+
+	chatConnection.onStarted = e => {
+	};
+
+	chatConnection.on('Send', (data) => {
+		var user = data.user;
+		var message = data.message;
+		var messages = document.getElementById('messages');
+
+		messages.value += `[${user}]: ${message}\n`;
+	});
+
+	chatConnection.start().catch(err => {
+	});
+
+	timerConnection.onClosed = e => {
+	};
+
+	timerConnection.on('Notify', (time) => {
+	});
+
+	timerConnection.start().catch(err => {
+	});
+
+	function send(message) {
+		chatConnection.invoke('Send', message);
+	}
+
+	function onSendMessage() {
+		var message = document.getElementById('message');
+		send(message.value);
+		message.value = '';
+	}
+
+</script>
+
+<div>
+	<input type="text" id="message" />
+	<input type="button" value="Send" onclick="onSendMessage()"/><br />
+	<textarea style="width:100%" readonly="readonly" id="messages"></textarea>
+</div>

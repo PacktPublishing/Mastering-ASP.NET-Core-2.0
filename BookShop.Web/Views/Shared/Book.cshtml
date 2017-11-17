@@ -1,0 +1,18 @@
+﻿@using BookShop.DomainModel
+@using BookShop.Web
+@using Microsoft.AspNetCore.Mvc.Localization
+@model IEnumerable<Book>
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+
+<table style="width:100%">
+	<tr>
+		<th>@SharedLocalizer["Title"]</th>
+		<th>@SharedLocalizer["Author"]</th>
+		<th>@SharedLocalizer["ReleaseDate"]</th>
+		<th></th>
+	</tr>
+	@foreach (var book in this.Model)
+	{
+		@Html.Partial("BookRecord", book)
+	}
+</table>

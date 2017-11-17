@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Book Shop";
+}
+@using BookShop.DomainModel
+@using BookShop.Web
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@model IEnumerable<Book>
+@inject IViewLocalizer Localizer
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+
+<h1>@Localizer["Welcome"]</h1>
+
+@Html.Partial("Search")
+
+<cache enabled="true" vary-by-header="Accept-Language" expires-sliding="TimeSpan.FromMinutes(10)">
+	<div>
+		@Html.Partial("Book", Model)
+	</div>
+</cache>

@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+		<MvcRazorCompileOnPublish>true</MvcRazorCompileOnPublish>
+		<PreserveCompilationContext>true</PreserveCompilationContext>
+    <UserSecretsId>aspnet-Book_Shop-FB25D82B-CD8C-47A3-A346-857D18940D0C</UserSecretsId>
+    <AssemblyName>BookShop.Web</AssemblyName>
+    <RootNamespace>BookShop.Web</RootNamespace>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+		<DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+		<DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="BuildBundlerMinifier" Version="2.6.362" />
+		<PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.Elm" Version="0.2.2" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.0-alpha2-final" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="1.0.0-alpha2-final" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookShop.DomainModel\DomainModel.csproj" />
+    <ProjectReference Include="..\BookShop.WebComponents\WebComponents.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+		<EmbeddedResource Update="Resources\SharedResource.en.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\SharedResource.pt.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Views\Home\Index.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Index.pt.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\Results.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\Results.pt.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

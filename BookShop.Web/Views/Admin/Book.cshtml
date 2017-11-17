@@ -1,0 +1,73 @@
+﻿@model BookShop.DomainModel.Book
+@using BookShop.DomainModel
+@{
+    ViewData["Title"] = "Add New Book";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@functions
+{
+	IEnumerable<SelectListItem> GetAuthors()
+	{
+		var authors = this.ViewBag.Authors as IEnumerable<Author>;
+
+		foreach (var author in authors)
+		{
+			yield return new SelectListItem { Text = author.Name, Value = author.AuthorId.ToString() };
+		}
+	}
+}
+
+<h2>Book</h2>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Book">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+			<div class="form-group">
+				<label asp-for="Author" class="control-label"></label>
+				<select asp-items="GetAuthors()" asp-for="Author" class="form-control"></select>
+				<span asp-validation-for="Author" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Description" class="control-label"></label>
+				<input asp-for="Description" class="form-control" />
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Genre" class="control-label"></label>
+				<input asp-for="Genre" class="form-control" />
+				<span asp-validation-for="Genre" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="ISBN" class="control-label"></label>
+				<input asp-for="ISBN" class="form-control" />
+				<span asp-validation-for="ISBN" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Stock" class="control-label"></label>
+				<input asp-for="Stock" class="form-control" />
+				<span asp-validation-for="Stock" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="ReleaseDate" class="control-label"></label>
+				<input asp-for="ReleaseDate" class="form-control" />
+				<span asp-validation-for="ReleaseDate" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Create" class="btn btn-default" />
+			</div>
+		</form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

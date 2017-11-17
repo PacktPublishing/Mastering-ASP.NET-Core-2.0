@@ -1,0 +1,71 @@
+﻿@model Book
+@{
+	ViewData["Title"] = "Book Shop - " + Model.Title;
+}
+@using BookShop.Web
+@using BookShop.DomainModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+<h1>Book Details - @Model.Title</h1>
+<div>
+	<form asp-controller="Home" asp-action="Review">
+		<input type="hidden" name="BookId" value="@Model.BookId"/>
+		<fieldset title="@Model.Title">
+			<table style="width:100%">
+				<tr>
+					<td><label>@SharedLocalizer["Title"]</label></td>
+					<td>@Model.Title</td>
+				</tr>
+				<tr>
+					<td><label>@SharedLocalizer["Author"]</label></td>
+					<td>@Html.ActionLink(@Model.Author.Name, "Author", routeValues: new { id = Model.Author.AuthorId })</td>
+				</tr>
+				<tr>
+					<td><label>@SharedLocalizer["ReleaseDate"]</label></td>
+					<td>@Model.ReleaseDate.ToString("yyyy-MM-dd")</td>
+				</tr>
+				<tr>
+					<td><label>@SharedLocalizer["Reviews"]</label></td>
+					<td>
+						@foreach (var review in Model.Reviews)
+						{
+							<p>
+								@review.Content
+								<br />
+								@review.Stars
+							</p>
+						}
+					</td>
+				</tr>
+				@if (User.Identity.IsAuthenticated)
+				{
+					<tr>
+						<td><label>Review</label></td>
+						<td><textarea name="Content" style="width:100%"></textarea></td>
+					</tr>
+					<tr>
+						<td><label>Stars</label></td>
+						<td>
+							<select name="Stars">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<button>Submit Review</button>
+						</td>
+					</tr>
+				}
+			</table>
+		</fieldset>
+	</form>
+</div>
+
+<hr />
+
+@Html.Partial("SignalR", Model)

@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Book Shop - Shopping Bag";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using BookShop.DomainModel
+@model dynamic
+
+@functions
+{
+
+}
+
+<h1>Shopping Bag</h1>
+
+<table style="width:100%">
+	<tr>
+		<th>Item</th>
+		<th>Quantity</th>
+		<th></th>
+	</tr>
+@foreach (var item in Model.Items as IEnumerable<Book>)
+{
+	<tr>
+		<td>@Html.ActionLink(item.Title, "Details", routeValues: new { id = item.BookId })</td>
+		<td>@Model.Cart[item.BookId]</td>
+		<td>@Html.ActionLink("Remove", "Remove", routeValues: new { id = item.BookId })</td>
+	</tr>
+}
+
+</table>
+@if (!Model.Cart.IsEmpty)
+{
+	<br/>
+	@if (User.Identity.IsAuthenticated)
+	{
+		@Html.ActionLink("Create Order", "Order")
+		<span> | </span>
+	}
+	@Html.ActionLink("Empty", "Empty")
+}
+
