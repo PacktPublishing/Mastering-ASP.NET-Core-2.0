@@ -10,11 +10,11 @@ This the code bundle for Mastering ASP.NET Core 2.0. All the code file for the b
 
 Use the following:
 
-1 - Open solution BookShop.sln using Visual Studio 2017.
-2 - Set Web as the startup project
-3 - Start debugging.
-4 - On the error message allow the execution of the migration.
-5 - Go to Register and create an account as administrator and any others a non-administrator
+* Open solution BookShop.sln using Visual Studio 2017.
+* Set Web as the startup project
+* Start debugging.
+* On the error message allow the execution of the migration.
+* Go to Register and create an account as administrator and any others a non-administrator
 
 The code will look like the following:
 ```
