@@ -32,4 +32,3 @@ To follow the example code in this book, you'll need a computer running a reason
 * [Building an ASP.NET Application with Visual Studio 2017 [Video]](https://www.packtpub.com/application-development/building-aspnet-application-visual-studio-2017-video?utm_source=github&utm_medium=repository&utm_campaign=9781787286917)
 
 * [ASP.NET Core 2 High Performance - Second Edition](https://www.packtpub.com/application-development/aspnet-core-2-high-performance-second-edition?utm_source=github&utm_medium=repository&utm_campaign=9781788399760)
-
