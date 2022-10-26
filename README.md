@@ -32,3 +32,7 @@ To follow the example code in this book, you'll need a computer running a reason
 * [Building an ASP.NET Application with Visual Studio 2017 [Video]](https://www.packtpub.com/application-development/building-aspnet-application-visual-studio-2017-video?utm_source=github&utm_medium=repository&utm_campaign=9781787286917)
 
 * [ASP.NET Core 2 High Performance - Second Edition](https://www.packtpub.com/application-development/aspnet-core-2-high-performance-second-edition?utm_source=github&utm_medium=repository&utm_campaign=9781788399760)
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781787283688">https://packt.link/free-ebook/9781787283688 </a> </p>
